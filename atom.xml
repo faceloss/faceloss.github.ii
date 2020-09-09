@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>卡子哥的博客</title>
   
-  <subtitle>洪卫的博客</subtitle>
+  <subtitle>卡子哥的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kawhiyin.cn/"/>
-  <updated>2020-06-30T18:09:44.000Z</updated>
+  <updated>2020-09-09T02:20:49.709Z</updated>
   <id>https://kawhiyin.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kawhiyin.cn/2019/08/27/blog-open-source/"/>
     <id>https://kawhiyin.cn/2019/08/27/blog-open-source/</id>
     <published>2019-08-27T03:41:03.000Z</published>
-    <updated>2020-06-30T18:09:44.000Z</updated>
+    <updated>2020-09-09T02:20:49.709Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;效果演示&quot;&gt;&lt;a href=&quot;#效果演示&quot; class=&quot;headerlink&quot; title=&quot;效果演示&quot;&gt;&lt;/a&gt;效果演示&lt;/h1&gt;&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;效果演示&quot;&gt;&lt;a href=&quot;#效果演示&quot; class=&quot;headerlink&quot; title=&quot;效果演示&quot;&gt;&lt;/a&gt;效果演示&lt;/h1&gt;&lt;h1 id=&quot;简短介绍&quot;&gt;&lt;a href=&quot;#简短介绍&quot; class=&quot;headerlink&quot;
         
       
     
