@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kawhiyin.cn/"/>
-  <updated>2020-09-09T02:20:49.709Z</updated>
+  <updated>2020-09-09T03:09:14.639Z</updated>
   <id>https://kawhiyin.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>博客开源</title>
-    <link href="https://kawhiyin.cn/2019/08/27/blog-open-source/"/>
-    <id>https://kawhiyin.cn/2019/08/27/blog-open-source/</id>
-    <published>2019-08-27T03:41:03.000Z</published>
-    <updated>2020-09-09T02:20:49.709Z</updated>
+    <title>game-arch</title>
+    <link href="https://kawhiyin.cn/2020/09/09/game-arch/"/>
+    <id>https://kawhiyin.cn/2020/09/09/game-arch/</id>
+    <published>2020-09-09T03:07:45.000Z</published>
+    <updated>2020-09-09T03:09:14.639Z</updated>
     
     <summary type="html">
     
@@ -29,20 +29,20 @@
       
         
         
-          &lt;h1 id=&quot;效果演示&quot;&gt;&lt;a href=&quot;#效果演示&quot; class=&quot;headerlink&quot; title=&quot;效果演示&quot;&gt;&lt;/a&gt;效果演示&lt;/h1&gt;&lt;h1 id=&quot;简短介绍&quot;&gt;&lt;a href=&quot;#简短介绍&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;确切的说是米聊服务器端使用的技术栈，大致有下面这些：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rose（MVC框架）&lt;/li&gt;
+&lt;li&gt;Blink（RPC框架）&lt;/li&gt;
+&lt;li&gt;Milink（客户端访问框架，小米链路层服务）&lt;/li&gt;
+&lt;li&gt;MLB（负载均衡）&lt;/li&gt;
+&lt;li&gt;ng
         
       
     
     </summary>
     
-      <category term="软件安装与配置" scheme="https://kawhiyin.cn/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
     
-    
-      <category term="Hexo" scheme="https://kawhiyin.cn/tags/Hexo/"/>
-    
-      <category term="Github" scheme="https://kawhiyin.cn/tags/Github/"/>
-    
-      <category term="博客" scheme="https://kawhiyin.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="blog" scheme="https://kawhiyin.cn/tags/blog/"/>
     
   </entry>
   
