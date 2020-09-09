@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kawhiyin.cn/"/>
-  <updated>2020-09-09T03:09:14.639Z</updated>
+  <updated>2020-09-09T04:13:42.828Z</updated>
   <id>https://kawhiyin.cn/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>game-arch</title>
-    <link href="https://kawhiyin.cn/2020/09/09/game-arch/"/>
-    <id>https://kawhiyin.cn/2020/09/09/game-arch/</id>
-    <published>2020-09-09T03:07:45.000Z</published>
-    <updated>2020-09-09T03:09:14.639Z</updated>
+    <link href="https://kawhiyin.cn/2019/06/09/game-arch/"/>
+    <id>https://kawhiyin.cn/2019/06/09/game-arch/</id>
+    <published>2019-06-09T03:07:45.000Z</published>
+    <updated>2020-09-09T04:13:42.828Z</updated>
     
     <summary type="html">
     
@@ -41,8 +41,12 @@
     
     </summary>
     
+      <category term="小米工作" scheme="https://kawhiyin.cn/categories/%E5%B0%8F%E7%B1%B3%E5%B7%A5%E4%BD%9C/"/>
     
-      <category term="blog" scheme="https://kawhiyin.cn/tags/blog/"/>
+    
+      <category term="migame" scheme="https://kawhiyin.cn/tags/migame/"/>
+    
+      <category term="archi" scheme="https://kawhiyin.cn/tags/archi/"/>
     
   </entry>
   
