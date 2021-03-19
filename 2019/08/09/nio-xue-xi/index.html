@@ -6,17 +6,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="game-arch, Java后端 大数据 全栈 OI ACM">
+    <meta name="keywords" content="NIO学习, Java后端 大数据 全栈 OI ACM">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="确切的说是米聊服务器端使用的技术栈，大致有下面这些：
-
-Rose（MVC框架）
-Blink（RPC框架）
-Milink（客户端访问框架，小米链路层服务）
-MLB（负载均衡）
-nginx（反向代理+负载均衡）
-zookeeper（云配置管理）">
+    <meta name="description" content="1、NIO的学习重点：Buffer缓冲区、Channel读写通道、Selectors选择器监听通道
+jdk1.4引入的io api，new io或者叫none blockint io（可代替原来io），nio以更高效方式读写io
+1、JAV">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +19,7 @@ zookeeper（云配置管理）">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>game-arch | 卡子哥的博客</title>
+    <title>NIO学习 | 卡子哥的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -623,13 +618,13 @@ zookeeper（云配置管理）">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        game-arch
+                        NIO学习
                     </div>
                 </div>
             </div>
@@ -741,12 +736,8 @@ zookeeper（云配置管理）">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/migame/" target="_blank">
-                                <span class="chip bg-color">migame</span>
-                            </a>
-                        
-                            <a href="/tags/archi/" target="_blank">
-                                <span class="chip bg-color">archi</span>
+                            <a href="/tags/NIO/" target="_blank">
+                                <span class="chip bg-color">NIO</span>
                             </a>
                         
                     </div>
@@ -757,8 +748,8 @@ zookeeper（云配置管理）">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/小米工作/" class="post-category" target="_blank">
-                                小米工作
+                            <a href="/categories/java基础/" class="post-category" target="_blank">
+                                java基础
                             </a>
                         
                     </div>
@@ -769,7 +760,7 @@ zookeeper（云配置管理）">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-06-09
+                    2019-08-09
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -807,142 +798,142 @@ zookeeper（云配置管理）">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>确切的说是米聊服务器端使用的技术栈，大致有下面这些：</p>
-<ul>
-<li>Rose（MVC框架）</li>
-<li>Blink（RPC框架）</li>
-<li>Milink（客户端访问框架，小米链路层服务）</li>
-<li>MLB（负载均衡）</li>
-<li>nginx（反向代理+负载均衡）</li>
-<li>zookeeper（云配置管理）</li>
-<li>Iris（消息队列MQ）</li>
-<li>ProtocolBuffer（数据传输格式）</li>
-<li>Log4j（日志系统）</li>
-<li>Mistore（后端存储 redis+mysql）</li>
-<li>mysql（关系型数据库）</li>
-<li>HugeGraph（图数据库）</li>
-<li>模调Module Call（S2S调用监控系统）</li>
-<li>StatWatcher（C2S调用监控告警系统）</li>
+                <h3 id="1、NIO的学习"><a href="#1、NIO的学习" class="headerlink" title="1、NIO的学习"></a>1、NIO的学习</h3><p>重点：Buffer缓冲区、Channel读写通道、Selectors选择器监听通道</p>
+<p>jdk1.4引入的io api，new io或者叫none blockint io（可代替原来io），nio以更高效方式读写io</p>
+<h5 id="1、JAVA-NIO-和-IO的主要区别"><a href="#1、JAVA-NIO-和-IO的主要区别" class="headerlink" title="1、JAVA NIO 和 IO的主要区别"></a>1、JAVA NIO 和 IO的主要区别</h5><ul>
+<li><p>传统id是面向流、阻塞io（字节数据流动）</p>
+</li>
+<li><p>nio是面向缓冲区、非阻塞io、选择器（通道和缓冲区，字节放缓冲区）</p>
+</li>
+<li><p>阻塞非阻塞以及selectors是针对网络io（channel负责传输、buffer负责存储）</p>
+</li>
 </ul>
-<p>米聊架构图：</p>
-<p>一、Rose</p>
-<p>Rose框架是从人人网引入的一个开源的高效的Java Web开发框架，基于SpringMVC，提供SpringMVC的基本功能，并在此上面简化了部分功能，降低了使用门槛。</p>
-<p>总体来说对外提供Server服务（包括TCP，HTTP等接口），对内访问DB，支持小米技术栈的各种框架集成。帮助开发者将更多时间聚焦于业务逻辑实现而非底层的开发，快速迭代项目。</p>
-<p>二、Blink</p>
-<p>Blink是一个分布式，高性能和透明化的rpc（remote process call）框架，主要特点：</p>
-<ul>
-<li>基于netty</li>
-<li>私有的传输协议，支持命令字模式</li>
-<li>可以方便的整合模调系统，监控运行状态</li>
-<li>支持L5动态负载均衡模式，无缝对接L5</li>
-<li>直接对接一切基于SPP或MCP框架的C++服务</li>
-<li>直接对接milink服务，bitmap服务和mistore存储</li>
+<h5 id="2、缓冲区buffer的数据存取"><a href="#2、缓冲区buffer的数据存取" class="headerlink" title="2、缓冲区buffer的数据存取"></a>2、缓冲区buffer的数据存取</h5><ul>
+<li>buffer在nio中负责数据的存取。缓冲区就是数组用于存储不同数据类型的数据<ul>
+<li><strong>根据数据类型不同boolean除外，提供相应的缓冲区</strong></li>
+<li>ByteBuffer、CharBuffer、ShortBuffer、Int、Long、Float、DoubleBuffer</li>
+<li>上述缓冲区管理方式都是通过allocate()获取缓冲区，ByteBuffer最常用</li>
+<li>Buffer中的核心方法就是put和get，实现comparble继承Buf</li>
+<li>缓冲区中还有四个核心属性：campacity最大容量声明不可变、limit可操作数据大小(后面无法读写)、position(缓冲区正在操作的位置)，mark：记录当前postition的位置（可以通过reset回复到mark位置）</li>
+<li><strong>flip()方法</strong>从写切换到读数据模式，将limit指针指到之前写的postion位置，然后position指向0（开始进行读数据）</li>
+<li>get()方法从0到limit读，读完position==limit，然后使用rewind()把position放到0，可以重复读buf数据</li>
+<li>clear()清空缓冲区回到最初状态（缓冲区中数据还在，只是处于被遗忘状态，指针回归了）</li>
+<li>记住：<code>0&lt;= mark &lt;= position &lt;= limit &lt;= capacity</code></li>
 </ul>
-<p>通过Blink框架就可以对外提供RPC接口，包括对Server端的S2S接口和对客户端的C2S接口。</p>
-<p>三、Milink</p>
-<p>Milink其实是小米自己做的一个链路层服务，主要解决三个问题：</p>
-<ul>
-<li>保证app到server链路的可用性</li>
-<li>解决服务器push到客户端的成功率和及时性</li>
-<li>方便业务快速接入</li>
+</li>
 </ul>
-<p>Milink的整体架构：</p>
-<p>Milink的部署架构：</p>
-<p>四、MLB负载均衡</p>
-<p>MLB是一个稳定可靠高效的负载均衡服务，MLB拆开来就是Module+L5+Business，即业务模块间通过L5进行调用。</p>
-<p>Server端暴露一个服务的时候需要配置L5，将modid+cmdid与ip:port对应起来，调用方通过制定modid和cmdid来确定ip:port，从而知道应该调到哪台机器哪个端口。配置示例如下：</p>
-<p>MLB具备以下几个功能：</p>
-<ul>
-<li>可以快速的进行手动上线、下线，灰度发布，流量切换</li>
-<li>可以做更加精确的接口部署，对于流量大的接口单独部署</li>
+<h5 id="3、直接缓冲区和非直接缓冲区"><a href="#3、直接缓冲区和非直接缓冲区" class="headerlink" title="3、直接缓冲区和非直接缓冲区"></a>3、直接缓冲区和非直接缓冲区</h5><ul>
+<li>非直接缓冲区：通过allocate()将缓冲区建立在jvm的内存中</li>
+<li>直接缓冲区：通过allocateDirect()分配直接缓冲区，建立在物理内存中（操作系统内容中），可以提高效率</li>
+<li>Read: 物理磁盘read–&gt;os内核地址空间copy到–&gt;jvm用户地址空间read到–&gt;用户程序中</li>
+<li>Write：用户程序write–&gt;jvm内存copy–&gt;os内核地址空间write–&gt;物理磁盘</li>
+<li>程序通过非直接缓冲区读写过程中存在 copy的过程，比较浪费时间</li>
+<li>直接缓冲区：物理内存中开辟映射文件（内存页）：用户地址空间–内核地址空间，提高效率、资源浪费、不安全。（System.gc也不可控回收这块内存，长时间需要使用这块内存的场景比较适合）</li>
 </ul>
-<p>参考：<a href="https://wiki.n.miui.com/pages/viewpage.action?pageId=131023121" target="_blank" rel="noopener">https://wiki.n.miui.com/pages/viewpage.action?pageId=131023121</a></p>
-<p>四、nginx（反向代理+负载均衡）</p>
-<p>前端页面（管理后台）的负载均衡使用nginx实现，server提供http服务和页面，部署好服务后，提供给运维一组ip:port和域名的映射关系，就可以使用域名访问http服务了。业界开源的框架，没什么好说的。</p>
-<p>五、zookeeper（云配置管理）</p>
-<p>zk在整个项目架构中充当了一个云配置管理的角色，主要有2个作用：</p>
-<ul>
-<li>业务中用到的一些配置变量可以再zk上管理，当需要更改配置的时候，不需要重启服务器；</li>
-<li>与其他组件连接的一些配置，比如mysql，mistore，mlb等</li>
+<h5 id="4、通道channel的原理与获取"><a href="#4、通道channel的原理与获取" class="headerlink" title="4、通道channel的原理与获取"></a>4、通道channel的原理与获取</h5><ul>
+<li>CPU把权限给DMA，IO操作就通过DMA去操作了，如果读写量大，就会建立大量DMA总线—&gt;更新成channel</li>
+<li>Channel是一个独立的处理器，附属于cpu（大型应用程序channel效率会高，不用dma）</li>
+<li>通道：用于源节点和目标节点的连接。在nio中负责缓冲区数据的传输，channel不存储数据，因此需要配合缓冲区传输</li>
+<li>通道的主要实现类： java.nio.channels.channel:file、socket、serverSocket、datagram-Channel分别对应文件、tcp、udp的io通道</li>
+<li>获取通道：<ul>
+<li>Java提供getChannel的方法<ul>
+<li>本地io：FileInputStream/output、RandomAccessFile</li>
+<li>网络io：Socket、ServerSocket、DatagramSocket</li>
 </ul>
-<p>六、Iris（消息队列MQ）</p>
-<p>Iris是一个简单的MQ中间件，其原理就是生产者将数据打给Iris，Iris通过L5和RPC调用Blink的s2s服务（push过程）。和大部分的MQ一样，生产者生产数据，消费者消费数据。</p>
-<p>七、ProtocolBuffer（数据传输格式）</p>
-<p>Protocol Buffers是google发明的一种数据交换格式，独立于语言，独立于平台。与其他的数据交换格式有所不同，Protocol Buffers是一种二进制的格式，因此在网络传输的时候效率更高，相对于json它的文件体积更小，相对于xml，它的解析速度更快。</p>
-<p>示例：</p>
-<pre><code>package com.wangjun.pb;
+</li>
+<li>jdk1.7以后的NIO2针对通道提供静态方法open()</li>
+<li>NIO的files工具类 newBtyeChannel()</li>
+</ul>
+</li>
+</ul>
+<h5 id="5、通道的数据传输与内存映射文件"><a href="#5、通道的数据传输与内存映射文件" class="headerlink" title="5、通道的数据传输与内存映射文件"></a>5、通道的数据传输与内存映射文件</h5><ul>
+<li><p>通道要配合缓冲区使用，channel、buffer</p>
+</li>
+<li><p>步骤如下：通道连接着目标和源节点</p>
+<ul>
+<li>获取通道： getchannel、opne、newByteChannel方法</li>
+<li>分配指定的缓冲区： ByteBuffer.allocate 非直接缓冲区、直接缓冲区</li>
+<li>将通道中数据存入缓冲区： inchannel.read(buf) != -1 in通道写到buf</li>
+<li>将缓冲区中的数据写入通道： buf.flip()切换到读模式，out通道中去读buf中的数据 buf.clear清空缓存区</li>
+<li>上面总结一句话<strong>从in通道读数据到buf，再把buf数据写到out通道</strong><code>读写是针对当前程序、或者说buffer</code></li>
+</ul>
+</li>
+<li><p>直接缓冲区的文件复制</p>
+<ul>
+<li>通过Buffer.allocateDirect或者channel.map() 获得</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">    Buffer buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">allocate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//非直接缓冲区</span>
 
-message AddressBook {
-  repeated Person people = 1;
-}
-
-message Person {
-  required string name = 1;
-  required int32 id = 2;
-  optional string email = 3;
-  repeated PhoneNumber phones = 4;
-}
-
- message PhoneNumber {
-    required string number = 1;
- }</code></pre><p>八、Log4j（日志系统）</p>
-<p>log4j应该都比较熟悉了，一个很好的日志框架，方便查看日志，排查问题。</p>
-<p>九、Mistore（后端存储 redis+mysql）</p>
-<p>mistore是一种快速高效的存储，底层基于redis和mysql，通过KV和Milist存储，使用集群的方式。</p>
-<p>一个业务使用mistore存储数据的话首先要申请，存储类型由mysql和redis自由组合，如果选择两种的话，mysql会作为持久化存储。申请完毕后会生成appid和L5Modid，其调用也是通过MLB做负载均衡的，其中，增删查改分别对应不同且固定的cmdid，有了L5Modid和cmdid就可以找到ip:port进行存储的读写。</p>
-<p>十、mysql（关系型数据库）</p>
-<p>有些业务需要关系型数据库的支持，比如用户发布的广播列表的索引，可以先通过查mysql查询所有广播id，再去mistore查询广播的详情，综合mysql和mistore使业务更加稳定健壮。</p>
-<p>十一、HugeGraph（图数据库）</p>
-<p>HugeGraph是百度在2018年中旬开源的一款图数据库（Graph Database）系统，可以存储海量的顶点（Vertex）和边（Edge）。实现了Apache ThinkerPop 3框架，支持Gremlin图查询语言。HugeGraph支持多用户并行操作，用户可输入Gremlin查询语句，并及时得到图查询结果。也可以再用户程序中调用hugeGraph API进行图分析或查询。</p>
-<p>米聊的用户关系数据就存储在了hugeGraph中，方便查询二度好友等关系。</p>
-<p>十二、模调Module Call（S2S调用监控系统）</p>
-<p>模调监控就是模块调用监控，是一个对模块间调用数据进行采集、计算、展示并报警的系统平台。可以检测并不只包含：</p>
-<ul>
-<li>模块间调用的成功率</li>
-<li>模块间调用的响应时间</li>
-<li>模块间调用的失败原因详细分类</li>
-<li>模块间的调用链，定位系统瓶颈</li>
+  FileChannel inChannel <span class="token operator">=</span> FileChannel<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span>openOption<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//直接缓冲区</span>
+    MappedByteBuffer inmap <span class="token operator">=</span> inChannel<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>MapMode<span class="token punctuation">.</span>READ_ONLY<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> inChannel<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    MappedByteBuffer inmap <span class="token operator">=</span> outChannel<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>MapMode<span class="token punctuation">.</span>WRITE_ONLY<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> inChannel<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//直接缓冲区通过通道map获得、或者allocateDirect 前者的读写直接读写缓冲区，不操作通道</span>
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dst <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span>inmap<span class="token punctuation">.</span>limit<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//limit可用空间</span>
+    inmap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>dst<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//从映射文件中中读到dst中</span>
+    outmap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>dst<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//写到outmap中物理内存映射文件 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="6、分散读取和聚集写入"><a href="#6、分散读取和聚集写入" class="headerlink" title="6、分散读取和聚集写入"></a>6、分散读取和聚集写入</h5><ul>
+<li>分散读取：将通道中的数据分散到多个缓冲区中去</li>
+<li>聚集写入：将多个缓冲区的数据聚集到通道中</li>
 </ul>
-<p>模调监控系统的原理</p>
-<ul>
-<li>每次RPC调用之后手动将结果上报给模调监控数据库。</li>
-<li>模调监控系统定期扫描该数据库来实现监控RPC调用的情况。</li>
+<h5 id="7、NIO字符集"><a href="#7、NIO字符集" class="headerlink" title="7、NIO字符集"></a>7、NIO字符集</h5><ul>
+<li>Charset 编码：字符串到字节数组 解码：字节数组到字符串</li>
+<li>Charset.availableCharsets 获得一个map记录 string-&gt;charset 的个数</li>
 </ul>
-<p>手动上报举例：</p>
-<pre><code>try {
-            GetAccountInfoRsp response = GetAccountInfoRsp.parseFrom(blinkResponse.getBody());
-            if (response.getRetCode() == 0) {
-                // 上报模调监控数据--成功
-                ModuleCallUtil.successCall(invokeId, providerId,interfaceId, providerIp, delay);
-                return response;
-           } else {
-                // 上报模调监控数据--失败
-                ModuleCallUtil.failCall(invokeId, providerId, interfaceId, providerIp, retval, delay);
-                throw new MiliaoAuditException(RetCode.ERROR_BLINK);
-           }
-       } catch (InvalidProtocolBufferException e) {
-       // 上报模调监控数据--失败
-           ModuleCallUtil.failCall(invokeId, providerId, interfaceId, providerIp, retval, delay);
-            throw new MiliaoAuditException(RetCode.ERROR_PARSE_PB);
-       }</code></pre><p>使用模调的时候，自己的业务需要申请的一个业务模调id，还必须知道对方的s2s服务的模调id和模调接口id这三个参数，以便模调系统知道此次s2s调用，从哪个业务发起调用到哪个业务的哪个服务。</p>
-<p>十三、StatWatcher（C2S调用监控告警系统）</p>
-<p>如果说模调系统是监控s2s服务的，那么StatWatcher就是检测c2s服务的。严格来讲StatWatcher是属于Milink框架的，这里单独拿出来和模调类比更容易理解。</p>
-<p>与模调一样，服务端代码中也需要显式的上报c2s服务调用结果，通过begin方法监控指定的命令字，通过end方法上报服务的返回code。</p>
-<pre><code>@Cmd(id = 1, name = "miliao.relation.maybeknow")
-public ServiceResponse getMayBeKnow(RpcInvocationBean inv, byte[] bytes) {
-    StatWatcher watcher = new StatWatcher();
-    watcher.begin("miliao.relation.maybeknow");
-    try {
-       ...
-   } catch (Exception e) {
-       ...
-   }
-
-    watcher.end(retCode);
-   ...
-    return inv.getResponse();
-}</code></pre><p>模块本地log目录（一般存储在/home/work/log/{$businessName}/）每分钟统计一次本模块的运行调用stat.log，该stat.log被用于监控报警，监控系统会定期的读取stat.log的内容，生成服务调用报告和告警。</p>
-<script>
+<h5 id="8、阻塞与非阻塞"><a href="#8、阻塞与非阻塞" class="headerlink" title="8、阻塞与非阻塞"></a>8、阻塞与非阻塞</h5><ul>
+<li><p>client 到 server</p>
+<ul>
+<li>阻塞：客户端发送读写请求给服务端，服务端判断不确定，线程会处于堵塞状态，如何解决某一个线程阻塞的问题？ 多线程为客户端发送过来的请求分配一个线程（线程池，尽可能利用cpu资源），多线程解决io阻塞问题（但是cpu没有100%的利用）</li>
+<li>非阻塞：核心概念选择器selectors，<ul>
+<li>通道会注册到选择器上（选择器监控通道状况，如果请求事件完全准备就绪，才会分配到服务端的一个或多个线程上去执行），降低了阻塞率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>阻塞IO</p>
+<ul>
+<li>传输后无法确认客户端是否发送完全，需要socketChannel.shutdown</li>
+</ul>
+</li>
+<li><p>非阻塞IO</p>
+<p>1、通道负责连接传输、缓冲区负责数据存取、选择器负责SelectableChannel的多路复用器，用于监控SelectableChannel的io状况</p>
+<p>2、fileChannel不能切换成非阻塞模式</p>
+<p>3、非阻塞IO流程如下：</p>
+<p>客户端：</p>
+<ul>
+<li>获取通道</li>
+<li>切换非阻塞模式：channel.configureBlocking(false);</li>
+<li>分配指定大小缓冲区</li>
+<li>发送数据到服务端 buf.put buf.flip channel.write(buf) <strong>buf的put是写buf,flip切换成buf读模式 读取buf把buf的内容write到通道channel中</strong></li>
+</ul>
+<p>服务端：（利用selector监听通道状态）</p>
+<ul>
+<li>获取通道</li>
+<li>切换非阻塞模式</li>
+<li>通道绑定端口</li>
+<li>获取选择器 Selector.open()</li>
+<li>通道注册到选择器上，通道有个register方法 channel.register(selector, options),options是int类型作用是检测通道的什么状态：通道与选择器之间的关系<strong>服务端channel注册通道接受事件</strong><ul>
+<li>读状态 read 1</li>
+<li>写状态 write 4 </li>
+<li>连接状态 connection 8</li>
+<li>接收状态 accept 16</li>
+<li>多个事件时候使用 与运算符</li>
+</ul>
+</li>
+<li>轮询的获取选择器上已经准备就绪事件while(selector.select &gt; 0)</li>
+<li>如果有就绪事件，就获取选择器中的所有事件的迭代器，然后一个一个的判断状态做对应动作<strong>读、写、就收、连接</strong></li>
+<li>判断是接受就绪，就获取客户端连接并切换成非阻塞模式（获得的客户端连接，读写时候都要切换）</li>
+<li>客户端的连接通道也要注册到selector，监控读就绪状态</li>
+<li>获取读就绪状态就绪通道，如果准备就绪且通道有值就读chanel写到buf中，flip一下就可以读buf里的值了</li>
+</ul>
+</li>
+</ul>
+<h5 id="9、DataGramChannel"><a href="#9、DataGramChannel" class="headerlink" title="9、DataGramChannel"></a>9、DataGramChannel</h5><ul>
+<li>send是写通道、receive是读通道 、bufput是写、get是读  channel.send(buf)针对通道是写针对buf是读，这样理解不会乱</li>
+</ul>
+<h5 id="10、管道"><a href="#10、管道" class="headerlink" title="10、管道"></a>10、管道</h5><p>JavaNIO管道是两个线程之间的单向数据连接，pipe有一个source和sink通道。数据会被写入sink通道，从source通道读区</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1110,7 +1101,7 @@ public ServiceResponse getMayBeKnow(RpcInvocationBean inv, byte[] bytes) {
                     </span>
                     <a href="https://kawhiyin.cn" class="b-link-green">卡子哥的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/06/09/game-arch/" class="b-link-green">game-arch</a>
+                    <a href="/2019/08/09/nio-xue-xi/" class="b-link-green">NIO学习</a>
                 </p>
             </div>
 
@@ -1133,7 +1124,7 @@ public ServiceResponse getMayBeKnow(RpcInvocationBean inv, byte[] bytes) {
         repo: 'faceloss.github.io',
         owner: 'faceloss',
         admin: ["faceloss"],
-        id: '2019/06/09/game-arch/',
+        id: '2019/08/09/nio-xue-xi/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1154,9 +1145,62 @@ public ServiceResponse getMayBeKnow(RpcInvocationBean inv, byte[] bytes) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/08/09/nio-xue-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="NIO学习">
+                        
+                        <span class="card-title">NIO学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1、NIO的学习重点：Buffer缓冲区、Channel读写通道、Selectors选择器监听通道
+jdk1.4引入的io api，new io或者叫none blockint io（可代替原来io），nio以更高效方式读写io
+1、JAV
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java基础/" class="post-category" target="_blank">
+                                    java基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/NIO/" target="_blank">
+                        <span class="chip bg-color">NIO</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/06/19/you-xi-zhong-xin-she-qu-ye-wu/">
                     <div class="card-image">
@@ -1181,68 +1225,8 @@ web站:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-19
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/小米工作/" class="post-category" target="_blank">
-                                    小米工作
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/migame/" target="_blank">
-                        <span class="chip bg-color">migame</span>
-                    </a>
-                    
-                    <a href="/tags/archi/" target="_blank">
-                        <span class="chip bg-color">archi</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/06/09/game-arch/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="game-arch">
-                        
-                        <span class="card-title">game-arch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            确切的说是米聊服务器端使用的技术栈，大致有下面这些：
-
-Rose（MVC框架）
-Blink（RPC框架）
-Milink（客户端访问框架，小米链路层服务）
-MLB（负载均衡）
-nginx（反向代理+负载均衡）
-zookeeper（云配置管理）
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-09
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-19
                             </span>
                         <span class="publish-author">
                             
@@ -1256,7 +1240,6 @@ zookeeper（云配置管理）
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
